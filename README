@@ -1,25 +1,29 @@
 A simple demonstration of calculating weekly payment
 
 /**
- * A simple class for the service of calculating per-week payment, 
- * according to the following rules:
+ * A general abstract class for the service of calculating per-week payment, 
+ * according to the following (default) rules:
  * 
- *     For hours within {@value #HOURS_THREASHOLD_EXTRA_PAY}, 
- *         pay by base hourly salary. 
- *     For hours over {@value #HOURS_THREASHOLD_EXTRA_PAY}, 
- *         pay by {@value #TIMES_EXTRA_PAY} times of base hourly salary
+ *For hours within {@value #constHoursThresholdExtraPay}, pay by base hourly salary. 
+ *For hours over {@value #constHoursThresholdExtraPay}, pay by {@value #constTimesExtraPay} 
+ *times of base hourly salary
  * 
  * Following conditions are considered error, and error code is to be returned.
- *    > Hourly base salary less than minimum which is {@value #MIN_PAY_PER_HOUR}.
- *    > Total working hour exceeding maximum which is {@value #MAX_HOURS_PER_WEEK}.
+ *    > Hourly base salary less than minimum which is {@value #constMinPayPerHour}.
+ *    > Total working hour exceeding maximum which is {@value #constMaxHoursPerWeek}.
  *    
- * Limitation: if both error conditions are met, only the error code for the prior 
- *             error is returned.
+ * Limitation: if both error conditions are met, only the error code for the prior error 
+ * is returned.
  *    
+ * Sub-classes can use default rules, or assign customized parameters to the protected 
+ * variables, or even override public methods to provide different rules and calculation.
+ * 
  * @author goldyliang@gmail.com
  *
  */
  
 The class is designed targeting as re-usable APIs, so the calculation result and the status is returned in a wrapper class, instead of directly printing it to System.out.
+
+A demo main() method exists in demo/PayCalcDemo.java, for both default and customized payment calculation.
 
 JUnit testing for normal input, error input and boundary tests.
