@@ -1,0 +1,25 @@
+A simple demonstration of calculating weekly payment
+
+/**
+ * A simple class for the service of calculating per-week payment, 
+ * according to the following rules:
+ * 
+ *     For hours within {@value #HOURS_THREASHOLD_EXTRA_PAY}, 
+ *         pay by base hourly salary. 
+ *     For hours over {@value #HOURS_THREASHOLD_EXTRA_PAY}, 
+ *         pay by {@value #TIMES_EXTRA_PAY} times of base hourly salary
+ * 
+ * Following conditions are considered error, and error code is to be returned.
+ *    > Hourly base salary less than minimum which is {@value #MIN_PAY_PER_HOUR}.
+ *    > Total working hour exceeding maximum which is {@value #MAX_HOURS_PER_WEEK}.
+ *    
+ * Limitation: if both error conditions are met, only the error code for the prior 
+ *             error is returned.
+ *    
+ * @author goldyliang@gmail.com
+ *
+ */
+ 
+The class is designed targeting as re-usable APIs, so the calculation result and the status is returned in a wrapper class, instead of directly printing it to System.out.
+
+JUnit testing for normal input, error input and boundary tests.
